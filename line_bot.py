@@ -184,6 +184,8 @@ def handle_message(event):
         preview_image_url="https://bejewelled-jelly-e19b4e.netlify.app/{}.png".format(event.message.text),
     )
 
+    print(ImageSendMessage)
+
     linebot_api.reply_message(event.reply_token,image_message)
 
 
@@ -227,7 +229,7 @@ def handle_image(event):
     P_DI = ta.PLUS_DI(highp, lowp, closep, timeperiod=14)
     M_DI = ta.MINUS_DI(highp, lowp, closep, timeperiod=14)
 
-    fig = plt.figure()
+    #fig = plt.figure()
     fig.set_figheight(12)
     fig.set_figwidth(16)
     dt_now = datetime.datetime.now()
