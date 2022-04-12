@@ -55,5 +55,8 @@ def handle_image(event):
     #linebot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url=f"https://imgsv.nikon-image.com/products/slr/lineup/d850/img/sample/pic_01_l.jpg",preview_image_url=f"https://imgsv.nikon-image.com/products/slr/lineup/d850/img/sample/pic_01_l.jpg"))
     linebot_api.reply_message(event.reply_token,image_message)
 
-if __name__=='__main__':
-    app.run()
+# ポート番号の設定
+if __name__ == "__main__":
+#    app.run()
+    port = int(os.getenv("PORT"))
+    app.run(host="0.0.0.0", port=port)
