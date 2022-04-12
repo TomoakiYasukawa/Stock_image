@@ -85,7 +85,7 @@ def handle_message(event):
     fig.set_figheight(12)
     fig.set_figwidth(16)
     dt_now = datetime.datetime.now()
-    fig.suptitle("test-testet : {}".format(dt_now.strftime('%Y/%m/%d')), fontname="MS Gothic", fontsize=40)
+    fig.suptitle("{} : {}".format(event.message.text, dt_now.strftime('%Y/%m/%d')), fontname="MS Gothic", fontsize=40)
 
     ax1 = fig.add_subplot(3, 2, 1)
     # ax1.set_xlim([pd.to_datetime('2019-01-28'), pd.to_datetime('2021-01-29')])
