@@ -1,7 +1,7 @@
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage
+from linebot.models import MessageEvent, TextMessage, TextSendMessage#, ImageMessage, ImageSendMessage
 import pya3rt
 #from flask_ngrok import run_with_ngrok
 
@@ -39,21 +39,19 @@ def handle_message(event):
     linebot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text))
     #linebot_api.reply_message(event.reply_token, image_message)
 
-@handler.add(MessageEvent,message=ImageMessage)
-def handle_image(event):
-    if event.reply_token == "00000000000000000000000000000000":
-        return
-    image_message = ImageSendMessage(
-        original_content_url="https://github.com/TomoakiYasukawa/Stock_line/blob/main/Image.png",
-        preview_image_url="https://github.com/TomoakiYasukawa/Stock_line/blob/main/Image.png",
-    )
 
-    event.message.text = '有無！画像だよ！'
-    print(event.message.text)
-    #linebot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text))
-    #linebot_api.reply_message(event.reply_token, image_message)
-    #linebot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url=f"https://imgsv.nikon-image.com/products/slr/lineup/d850/img/sample/pic_01_l.jpg",preview_image_url=f"https://imgsv.nikon-image.com/products/slr/lineup/d850/img/sample/pic_01_l.jpg"))
-    linebot_api.reply_message(event.reply_token,image_message)
+#@handler.add(MessageEvent,message=ImageMessage)
+#def handle_image(event):
+#    if event.reply_token == "00000000000000000000000000000000":
+#        return
+#    image_message = ImageSendMessage(
+#        original_content_url="https://github.com/TomoakiYasukawa/Stock_line/blob/main/Image.png",
+#        preview_image_url="https://github.com/TomoakiYasukawa/Stock_line/blob/main/Image.png",
+#    )
+
+    #event.message.text = '有無！画像だよ！'
+    #print(event.message.text)
+    #linebot_api.reply_message(event.reply_token,image_message)
 
 # ポート番号の設定
 if __name__ == "__main__":
