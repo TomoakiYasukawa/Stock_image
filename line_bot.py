@@ -177,6 +177,8 @@ def handle_message(event):
     os.system('git remote add origin https://github.com/TomoakiYasukawa/Stock_image.git')
     os.system('git push origin master')
 
+    os.remove(filename)
+
     time.sleep(10)
 
     image_message = ImageSendMessage(
