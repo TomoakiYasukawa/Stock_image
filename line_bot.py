@@ -177,7 +177,7 @@ def handle_message(event):
     os.system('git remote add origin https://github.com/TomoakiYasukawa/Stock_image.git')
     os.system('git push origin master')
 
-    time.sleep(5)
+    time.sleep(10)
 
     image_message = ImageSendMessage(
         original_content_url="https://keen-halva-ba4ecd.netlify.app/{}.png".format(event.message.text),
