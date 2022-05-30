@@ -182,8 +182,10 @@ def handle_message(event):
     time.sleep(10)
 
     image_message = ImageSendMessage(
-        original_content_url="https://keen-halva-ba4ecd.netlify.app/{}.png".format(event.message.text),
-        preview_image_url="https://keen-halva-ba4ecd.netlify.app/{}.png".format(event.message.text),
+        #original_content_url="https://keen-halva-ba4ecd.netlify.app/{}.png".format(event.message.text),
+        #preview_image_url="https://keen-halva-ba4ecd.netlify.app/{}.png".format(event.message.text),
+        original_content_url="https://storage.cloud.google.com/genial-core-351102.appspot.com/16172436935694.png",
+        preview_image_url="https://storage.cloud.google.com/genial-core-351102.appspot.com/16172436935694.png",
     )
 
     print(ImageSendMessage)
