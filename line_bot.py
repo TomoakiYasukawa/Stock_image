@@ -230,6 +230,10 @@ def handle_image(event):
     ADX = ta.ADX(highp, lowp, closep, timeperiod=14)
     P_DI = ta.PLUS_DI(highp, lowp, closep, timeperiod=14)
     M_DI = ta.MINUS_DI(highp, lowp, closep, timeperiod=14)
+    # Bollinger Bands
+    upper1, middle, lower1 = ta.BBANDS(closep, timeperiod=25, nbdevup=1, nbdevdn=1, matype=0)
+    upper2, middle, lower2 = ta.BBANDS(closep, timeperiod=25, nbdevup=2, nbdevdn=2, matype=0)
+    upper3, middle, lower3 = ta.BBANDS(closep, timeperiod=25, nbdevup=3, nbdevdn=3, matype=0)
 
     #fig = plt.figure()
     fig.set_figheight(12)
@@ -285,14 +289,26 @@ def handle_image(event):
     ax4.hlines([0], dfs.index[1], dfs.index[-1], "red", linestyles='dashed')
     ax4.xaxis.set_major_formatter(mdates.DateFormatter('%y/%m'))
 
+    # ax5 = fig.add_subplot(3, 2, 6)
+    # ax5.plot(ADX.index, ADX, "r", label="ADX2")
+    # ax5.plot(P_DI.index, P_DI, "b", label="+DI")
+    # ax5.plot(M_DI.index, M_DI, "orange", label="-DI")
+    # ax5.set_ylabel('ADX,DMI')
+    # ax5.set_xlim([dfs.index[14], dfs.index[-1]])
+    # ax5.hlines([20], dfs.index[1], dfs.index[-1], "red", linestyles='dashed')
+    # ax5.xaxis.set_major_formatter(mdates.DateFormatter('%y/%m'))
+
     ax5 = fig.add_subplot(3, 2, 6)
-    ax5.plot(ADX.index, ADX, "r", label="ADX2")
-    ax5.plot(P_DI.index, P_DI, "b", label="+DI")
-    ax5.plot(M_DI.index, M_DI, "orange", label="-DI")
-    ax5.set_ylabel('ADX,DMI')
+    ax5.set_ylabel('BB-Band')
     ax5.set_xlim([dfs.index[14], dfs.index[-1]])
-    ax5.hlines([20], dfs.index[1], dfs.index[-1], "red", linestyles='dashed')
-    ax5.xaxis.set_major_formatter(mdates.DateFormatter('%y/%m'))
+    ax5.plot(closep.index, closep, "black", label="Stock")
+    ax5.plot(upper1, label='68%', color='b', linewidth=0.5)
+    ax5.plot(lower1, color='b', linewidth=0.5)
+    ax5.plot(upper2, label='95%', color='g', linewidth=0.5)
+    ax5.plot(lower2, color='g', linewidth=0.5)
+    ax5.plot(upper3, label='99%', color='r', linewidth=0.5)
+    ax5.plot(lower3, color='r', linewidth=0.5)
+
 
     # fig.tight_layout()
 
